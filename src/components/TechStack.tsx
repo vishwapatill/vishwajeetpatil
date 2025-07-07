@@ -56,7 +56,7 @@ const TechStack = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {technologies.map((tech, index) => (
             <div
               key={tech.name}
@@ -64,12 +64,14 @@ const TechStack = () => {
               onMouseEnter={() => setHoveredTech(tech.name)}
               onMouseLeave={() => setHoveredTech(null)}
             >
-              <div className={`bg-card border rounded-lg p-6 text-center hover:border-primary/50 transition-all duration-300 transform hover:scale-105 modern-glow ${categoryColors[tech.category]}`}>
-                <div className="text-4xl mb-3"><img src={tech.icon}></img></div>
-                <h4 className="text-sm font-medium text-white">{tech.name}</h4>
+              <div className={`bg-card border rounded-lg p-3 text-center hover:border-primary/50 transition-all duration-300 transform hover:scale-105 modern-glow ${categoryColors[tech.category]}`}>
+                <div className="w-10 h-10 mx-auto mb-2">
+                  <img src={tech.icon} alt={tech.name} className="w-full h-full object-contain" />
+                </div>
+                <h4 className="text-xs font-medium text-white">{tech.name}</h4>
               </div>
               {hoveredTech === tech.name && (
-                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-primary text-white px-3 py-1 rounded text-sm whitespace-nowrap z-10">
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary text-white px-2 py-1 rounded text-xs whitespace-nowrap z-10">
                   {tech.name}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-primary"></div>
                 </div>

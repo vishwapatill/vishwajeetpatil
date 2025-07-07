@@ -9,16 +9,17 @@ const FashionRecommendation = lazy(() => import('./projects/fashion-recommendati
 const ContentPipeline = lazy(() => import('./projects/content-processing.jsx'));
 const InfluencerScoring = lazy(() => import('./projects/influencer-scoring.jsx'));
 const VishalElectronics = lazy(() => import('./projects/vishal-electric.jsx'));
-const FoodPairingSystem=lazy(() => import('./projects/FoodPairingSystem.jsx'));
-const HousePriceRegression=lazy(()=>import('./projects/Houseprice.jsx'));
-const VehicleRecommendation=lazy(()=>import('./projects/vehicleRecommendation.jsx'));
+const FoodPairingSystem = lazy(() => import('./projects/FoodPairingSystem.jsx'));
+const HousePriceRegression = lazy(() => import('./projects/Houseprice.jsx'));
+const VehicleRecommendation = lazy(() => import('./projects/vehicleRecommendation.jsx'));
+
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [overlayProject, setOverlayProject] = useState<number | null>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
-  const projects = [
+   const projects = [
     {
       id: 'nimma-manne',
       title: "Nimma Manne — House Rental Application",
@@ -144,7 +145,7 @@ const Projects = () => {
     
   ];
 
-  const openOverlay = (index: number) => {
+  const openOverlay = (index) => {
     setOverlayProject(index);
     document.body.style.overflow = 'hidden';
   };
@@ -158,17 +159,17 @@ const Projects = () => {
     setShowAllProjects(true);
   };
 
-  const handleGithubClick = (e: React.MouseEvent, githubUrl: string) => {
+  const handleGithubClick = (e, githubUrl) => {
     e.stopPropagation();
     window.open(githubUrl, '_blank');
   };
 
-  const handleDemoClick = (e: React.MouseEvent, demoUrl: string) => {
+  const handleDemoClick = (e, demoUrl) => {
     e.stopPropagation();
     window.open(demoUrl, '_blank');
   };
 
-  const projectsToShow = showAllProjects ? projects : projects.slice(0, 4);
+  const projectsToShow = showAllProjects ? projects : projects.slice(0,6);
 
   return (
     <section id="projects" className="py-20 px-4 relative">
@@ -193,8 +194,8 @@ const Projects = () => {
             <Card
               key={project.id}
               className={`bg-slate-800/50 border-slate-700 hover:border-blue-500/50 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10 backdrop-blur-sm ${!showAllProjects && index === 0 ? 'opacity-100 translate-y-0' :
-                  showAllProjects && index > 0 ? 'opacity-100 translate-y-0 animate-fadeInUp' : 'opacity-100 translate-y-0'
-                }`}
+                showAllProjects && index > 0 ? 'opacity-100 translate-y-0 animate-fadeInUp' : 'opacity-100 translate-y-0'
+              }`}
               onClick={() => openOverlay(index)}
               style={{
                 animationDelay: showAllProjects && index > 0 ? `${(index - 1) * 200}ms` : '0ms'
@@ -219,7 +220,6 @@ const Projects = () => {
                   {project.description}
                 </CardDescription>
               </CardHeader>
-
               <CardContent>
                 <div className="space-y-4">
                   <div>
@@ -235,7 +235,6 @@ const Projects = () => {
                       ))}
                     </div>
                   </div>
-
                   {selectedProject === index && (
                     <div className="space-y-4 animate-slideDown">
                       <div>
@@ -249,7 +248,6 @@ const Projects = () => {
                           ))}
                         </ul>
                       </div>
-
                       <div className="flex gap-3 pt-2">
                         <Button
                           size="sm"
@@ -282,18 +280,16 @@ const Projects = () => {
         {/* View All Projects Button */}
         {!showAllProjects && (
           <div className={`text-center mt-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            
             <Button
               onClick={handleViewAllProjects}
               size="lg"
-              className="relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-medium shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:scale-105 overflow-hidden group"
+              className="relative bg-slate-900 text-white px-8 py-4  rounded-lg font-medium shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:scale-105 overflow-hidden group animate-breathing-glow"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300 animate-pulse"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <span className="relative z-10 flex items-center gap-2">
                 View All Projects
                 <ArrowUp className="w-5 h-5 rotate-45 group-hover:rotate-90 transition-transform duration-300" />
               </span>
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 opacity-20 blur-lg animate-pulse"></div>
             </Button>
           </div>
         )}
@@ -306,17 +302,14 @@ const Projects = () => {
             className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-300"
             onClick={closeOverlay}
           />
-
           <div className="relative w-full max-w-6xl max-h-[90vh] bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl border border-blue-500/30 shadow-2xl overflow-hidden">
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-sm -z-10"></div>
-
             <button
               onClick={closeOverlay}
               className="absolute top-4 right-4 z-20 p-2 bg-slate-800/80 hover:bg-slate-700/80 rounded-full border border-blue-500/30 text-white transition-all duration-200 hover:scale-105"
             >
               <X className="w-5 h-5" />
             </button>
-
             <div className="h-full overflow-y-auto" style={{ maxHeight: 'calc(90vh - 0px)' }}>
               <Suspense fallback={
                 <div className="flex items-center justify-center h-64">
@@ -326,7 +319,6 @@ const Projects = () => {
                   </div>
                 </div>
               }>
-                {/* Dynamically render the project component */}
                 {(() => {
                   const ProjectComponent = projects[overlayProject].component;
                   return <ProjectComponent project={projects[overlayProject]} onClose={closeOverlay} />;
@@ -348,7 +340,7 @@ const Projects = () => {
             transform: translateY(0);
           }
         }
-        
+
         @keyframes slideDown {
           from {
             max-height: 0;
@@ -359,13 +351,29 @@ const Projects = () => {
             opacity: 1;
           }
         }
-        
+
+        @keyframes breathingGlow {
+          0% {
+            box-shadow: 0 0 5px #3b82f6, 0 0 10px #1d4ed8;
+          }
+          50% {
+            box-shadow: 0 0 15px #3b82f6, 0 0 25px #1d4ed8;
+          }
+          100% {
+            box-shadow: 0 0 5px #3b82f6, 0 0 10px #1d4ed8;
+          }
+        }
+
         .animate-fadeInUp {
           animation: fadeInUp 0.6s ease-out forwards;
         }
-        
+
         .animate-slideDown {
           animation: slideDown 0.3s ease-out forwards;
+        }
+
+        .animate-breathing-glow {
+          animation: breathingGlow 3s ease-in-out infinite;
         }
       `}</style>
     </section>
