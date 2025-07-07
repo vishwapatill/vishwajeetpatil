@@ -1,11 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Hero = () => {
+  const [typedText, setTypedText] = useState('');
   const fullText = "Data Scientist | Full-Stack Developer | ML Enthusiast";
   const { ref, isVisible } = useScrollAnimation();
+
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index <= fullText.length) {
+        setTypedText(fullText.slice(0, index));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 80);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
@@ -42,8 +56,8 @@ const Hero = () => {
               <span className="text-primary block bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Vishwajeet Patil</span>
             </h1>
             <div className="min-h-[4rem]">
-              <p className="text-xl lg:text-2xl text-accent font-medium lg:whitespace-nowrap md:whitespace-nowrap whitespace-normal">
-                {fullText}
+              <p className="text-xl lg:text-2xl text-accent font-medium typing-animation lg:whitespace-nowrap md:whitespace-nowrap whitespace-normal">
+                {typedText}
               </p>
             </div>
           </div>
