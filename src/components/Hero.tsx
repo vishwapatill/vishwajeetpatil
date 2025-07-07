@@ -5,7 +5,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Hero = () => {
   const [typedText, setTypedText] = useState('');
-  const fullText = "Full-Stack Developer | Data Scientist | ML Enthusiast";
+  const fullText = "Data Scientist | Full-Stack Developer | ML Enthusiast";
   const { ref, isVisible } = useScrollAnimation();
 
   useEffect(() => {
@@ -55,17 +55,19 @@ const Hero = () => {
               Hello, I'm
               <span className="text-primary block bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Vishwajeet Patil</span>
             </h1>
-            <div className="h-16">
-              <p className="text-xl lg:text-2xl text-accent font-medium typing-animation">
+            <div className="min-h-[4rem]">
+              <p className="text-xl lg:text-2xl text-accent font-medium typing-animation lg:whitespace-nowrap md:whitespace-nowrap whitespace-normal">
                 {typedText}
               </p>
             </div>
           </div>
+
           <p className={`text-lg text-muted-foreground leading-relaxed max-w-2xl fade-in-up stagger-2 ${isVisible ? 'visible' : ''}`}>
             Passionate about creating intelligent solutions through code. I build full-stack applications
             and develop machine learning models that solve real-world problems. From web development to
             deep learning, I love turning ideas into reality with clean, modern design.
           </p>
+
           <div className={`flex flex-wrap gap-4 fade-in-up stagger-3 ${isVisible ? 'visible' : ''}`}>
             <Button
               size="lg"
@@ -88,6 +90,7 @@ const Hero = () => {
               </Button>
             </a>
           </div>
+
           <div className={`pt-8 fade-in-up stagger-4 ${isVisible ? 'visible' : ''}`}>
             <button
               onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
