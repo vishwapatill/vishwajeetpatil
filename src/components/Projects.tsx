@@ -11,7 +11,7 @@ const InfluencerScoring = lazy(() => import('./projects/influencer-scoring.jsx')
 const VishalElectronics = lazy(() => import('./projects/vishal-electric.jsx'));
 const FoodPairingSystem=lazy(() => import('./projects/FoodPairingSystem.jsx'));
 const HousePriceRegression=lazy(()=>import('./projects/Houseprice.jsx'));
-const VehicleRecommendation=lazy(()=>import('./projects/VehicleRecommendation.jsx'));
+const VehicleRecommendation=lazy(()=>import('./projects/vehicleRecommendation.jsx'));
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [overlayProject, setOverlayProject] = useState<number | null>(null);
